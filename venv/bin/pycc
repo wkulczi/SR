@@ -1,0 +1,3 @@
+#!/home/wkulczi/Documents/SR/venv/bin/python
+from numba.pycc import main
+main()
