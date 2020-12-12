@@ -9,7 +9,6 @@ class Optimizer:
         self.excluded_products = []
         self.logs = {}
         self.setup_logs()
-        # self.optimize_options = {'random':self.random_exclusion}
         super().__init__()
 
     def setup_logs(self):
@@ -21,7 +20,6 @@ class Optimizer:
 
     def optimize_day(self, df_yesterday, df_today, log_exclusions=True) -> []:
         products_to_exclude_today = []
-        # returns empty if gets empty, fu
         if type(df_yesterday) is not list:
             if self.optimize_option == 'random':
                 yesterdays_optimized_products = df_yesterday[df_yesterday['INCLUDE'] == True]['product_id'].unique()
@@ -37,7 +35,7 @@ class Optimizer:
             self.log_exclusions(df_today, type(df_yesterday), products_to_exclude_today)
         return df_today
 
-    def random_exclusion(self, products, date, how_many_ratio=20, randomseed=12) -> []:
+    def random_exclusion(self, products, date, how_many_ratio=3.1, randomseed=12) -> []:
         dummy_list_of_potentially_excluded_products = list(products)
         dummy_list_of_potentially_excluded_products.sort()
 
@@ -65,11 +63,11 @@ class Optimizer:
                 'productsActuallyExcluded': actually_excluded_products
             })
 
-            with open("exclusions_log.txt", "a+") as logfile:
-                logfile.write(json.dumps({"Date": str(date)}) + "\n")
-                logfile.write(json.dumps({"Products to exclude": prod2ex}) + "\n")
-                logfile.write(json.dumps({
-                    "Actually excluded products": actually_excluded_products}) + "\n")
+            # with open("exclusions_log.txt", "a+") as logfile:
+            #     logfile.write(json.dumps({"Date": str(date)}) + "\n")
+            #     logfile.write(json.dumps({"Products to exclude": prod2ex}) + "\n")
+            #     logfile.write(json.dumps({
+            #         "Actually excluded products": actually_excluded_products}) + "\n")
 
     def dump_logs(self, filename):
         with open(filename, 'w') as outfile:

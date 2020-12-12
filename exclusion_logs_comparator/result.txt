@@ -1,0 +1,37 @@
+1 days missing in student log file: {'2020-10-04'}
+[DAY 2020-09-30] productsToExclude: valid, productsActuallyExcluded: valid
+[DAY 2020-10-01] productsToExclude: valid, productsActuallyExcluded: valid
+[DAY 2020-10-02] productsToExclude: valid, productsActuallyExcluded: valid
+[DAY 2020-10-03] productsToExclude: valid, productsActuallyExcluded: valid
+[DAY 2020-10-04] not found and has no excluded products, skipping.
+[DAY 2020-10-05] productsToExclude: valid, productsActuallyExcluded: valid
+[DAY 2020-10-06] productsToExclude: valid, productsActuallyExcluded: valid
+[DAY 2020-10-07] productsToExclude: valid, productsActuallyExcluded: valid
+[DAY 2020-10-08] productsToExclude: valid, productsActuallyExcluded: valid
+[DAY 2020-10-09] productsToExclude: valid, productsActuallyExcluded: valid
+[DAY 2020-10-10] productsToExclude: valid, productsActuallyExcluded: valid
+[DAY 2020-10-11] productsToExclude: valid, productsActuallyExcluded: valid
+[DAY 2020-10-12] productsToExclude: valid, productsActuallyExcluded: valid
+[DAY 2020-10-13] productsToExclude: valid, productsActuallyExcluded: valid
+[DAY 2020-10-14] productsToExclude: valid, productsActuallyExcluded: valid
+[DAY 2020-10-15] productsToExclude: valid, productsActuallyExcluded: valid
+[DAY 2020-10-16] productsToExclude: valid, productsActuallyExcluded: valid
+[DAY 2020-10-17] productsToExclude: valid, productsActuallyExcluded: valid
+[DAY 2020-10-18] productsToExclude: valid, productsActuallyExcluded: valid
+[DAY 2020-10-19] productsToExclude: valid, productsActuallyExcluded: valid
+[DAY 2020-10-20] productsToExclude: valid, productsActuallyExcluded: valid
+[DAY 2020-10-21] productsToExclude: valid, productsActuallyExcluded: valid
+[DAY 2020-10-22] productsToExclude: valid, productsActuallyExcluded: valid
+[DAY 2020-10-23] productsToExclude: valid, productsActuallyExcluded: valid
+[DAY 2020-10-24] productsToExclude: valid, productsActuallyExcluded: valid
+[DAY 2020-10-25] productsToExclude: valid, productsActuallyExcluded: valid
+[DAY 2020-10-26] productsToExclude: valid, productsActuallyExcluded: valid
+[DAY 2020-10-27] productsToExclude: valid, productsActuallyExcluded: valid
+[DAY 2020-10-28] productsToExclude: valid, productsActuallyExcluded: valid
+[DAY 2020-10-29] productsToExclude: valid, productsActuallyExcluded: valid
+[DAY 2020-10-30] productsToExclude: valid, productsActuallyExcluded: valid
+[DAY 2020-10-31] productsToExclude: valid, productsActuallyExcluded: valid
+[DAY 2020-11-01] productsToExclude: valid, productsActuallyExcluded: valid
+[DAY 2020-11-02] productsToExclude: valid, productsActuallyExcluded: valid
+33/34 correct productsToExclude
+33/34 correct productsActuallyExcluded, Not found: 1 days
