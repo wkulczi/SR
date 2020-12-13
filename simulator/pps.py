@@ -37,17 +37,16 @@ class PerPartnerSimulator:
         self.df.insert(0, 'INCLUDE', True)
 
         self.df_grouped_by_day = [group for _, group in self.df.groupby('click_timestamp')]  # n.o. groups = last_day
-
+        self.remove_damaged_records()
         print('[LOG] Init for partner {} done.'.format(self.partner_id))
 
     def simulatePartner(self):
         self.simulator_core.reset_cumulative_values()
 
-        for i in range(0,len(self.df_grouped_by_day)):
+        for i in range(0, len(self.df_grouped_by_day)):
             simulation_day_result = self.simulate_day(current_day_number=i)
             self.result_dataframe = self.result_dataframe.append(simulation_day_result, ignore_index=True)
         print('[LOG] Simulation for partner {} done.'.format(self.partner_id))
-
 
     def get_yesterdays_data(self, current_day_number):
         if current_day_number < 0:
@@ -56,14 +55,14 @@ class PerPartnerSimulator:
             return self.df_grouped_by_day[current_day_number - 1]
 
     def get_yester_day(self, day):
-        if day-1 in range(0, len(self.df_grouped_by_day)):
-            return self.df_grouped_by_day[day-1]
+        if day - 1 in range(0, len(self.df_grouped_by_day)):
+            return self.df_grouped_by_day[day - 1]
         else:
             return []
 
     def simulate_day(self, current_day_number):
         self.df_grouped_by_day[current_day_number] = self.optimizer.optimize_day(
-            self.get_yester_day(current_day_number), self.df_grouped_by_day[current_day_number], log_exclusions=False)
+            self.get_yester_day(current_day_number), self.df_grouped_by_day[current_day_number], log_exclusions=True)
 
         self.optimizer.dump_logs('exclusion_logs_comparator/my_exclusion_logs/' + str(self.partner_id) + ".json")
 
@@ -73,3 +72,7 @@ class PerPartnerSimulator:
     def save_simulation_results(self, path):
         self.result_dataframe.to_parquet(path + str(self.partner_id) + '.parquet')
         print('[LOG] Results saved.')
+
+    def remove_damaged_records(self):
+        for i in range(0, len(self.df_grouped_by_day)):
+            self.df_grouped_by_day[i] = self.df_grouped_by_day[i][self.df_grouped_by_day[i]['product_id'] != '-1']
