@@ -23,6 +23,8 @@ class Optimizer:
         if type(df_yesterday) is not list:
             if self.optimize_option == 'random':
                 yesterdays_optimized_products = df_yesterday[df_yesterday['INCLUDE'] == True]['product_id'].unique()
+                # jeśli tylko do optymalizatora to tutaj:
+                yesterdays_optimized_products = [i for i in yesterdays_optimized_products if i != '-1']
                 self.excluded_products = np.unique(np.concatenate(
                     (yesterdays_optimized_products, self.excluded_products),
                     axis=0)).tolist()
@@ -35,7 +37,7 @@ class Optimizer:
             self.log_exclusions(df_today, type(df_yesterday), products_to_exclude_today)
         return df_today
 
-    def random_exclusion(self, products, date, how_many_ratio=3.1, randomseed=12) -> []:
+    def random_exclusion(self, products, date, how_many_ratio=20, randomseed=12) -> []:
         dummy_list_of_potentially_excluded_products = list(products)
         dummy_list_of_potentially_excluded_products.sort()
 
