@@ -2,3 +2,8 @@
 /data/partners/
 /venv/
 *_checkpoints
+/exclusion_logs_comparator/Dr_Szwabe_exclusion_logs/
+/exclusion_logs_comparator/mr_Riegel_logs/
+/prepare_data/cpstimestampformatted.csv
+/prepare_data/cpstimestampformatted.parquet
+/prepare_data/CPStimestampnotformatted.parquet

@@ -63,7 +63,7 @@ class PerPartnerSimulator:
 
     def simulate_day(self, current_day_number):
         self.df_grouped_by_day[current_day_number] = self.optimizer.optimize_day(
-            self.get_yester_day(current_day_number), self.df_grouped_by_day[current_day_number], log_exclusions=False)
+            self.get_yester_day(current_day_number), self.df_grouped_by_day[current_day_number], log_exclusions=True)
 
         self.optimizer.dump_logs('exclusion_logs_comparator/my_exclusion_logs/' + str(self.partner_id) + ".json")
 
