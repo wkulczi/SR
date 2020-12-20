@@ -14,7 +14,7 @@ class Optimizer:
     def setup_logs(self):
         self.logs['days'] = []
 
-    def optimize_day(self, df_yesterday, df_today, log_exclusions=True) -> []:
+    def optimize_day(self, df_yesterday, df_today,df_today_dates_string,df_yesterday_dates_string, log_exclusions) -> []:
         products_to_exclude_today = []
         if type(df_yesterday) is not list:
             if self.optimize_option == 'random':
@@ -24,15 +24,14 @@ class Optimizer:
                     axis=0)).tolist()
                 products_to_exclude_today = self.random_exclusion(
                     self.seen_so_far,
-                    df_yesterday['click_timestamp'].values[0])
-
+                    df_yesterday_dates_string)
                 df_today.is_copy = False
                 df_today.loc[df_today['product_id'].isin(products_to_exclude_today), 'INCLUDE'] = False
         if log_exclusions:
-            self.log_exclusions(df_today, type(df_yesterday), products_to_exclude_today)
+            self.log_exclusions(df_today,df_today_dates_string, type(df_yesterday), products_to_exclude_today)
         return df_today
 
-    def random_exclusion(self, products, date, how_many_ratio=20, randomseed=12) -> []:
+    def random_exclusion(self, products, date, how_many_ratio=3.1, randomseed=12) -> []:
         dummy_list_of_potentially_excluded_products = list(products)
         dummy_list_of_potentially_excluded_products.sort()
 
@@ -43,9 +42,9 @@ class Optimizer:
                                             dummy_how_many_products)
         return products_to_exclude
 
-    def log_exclusions(self, day_dataframe, day_yesterday_type, products_to_exclude):
+    def log_exclusions(self, day_dataframe, df_date, day_yesterday_type, products_to_exclude):
         if type(day_dataframe) is not list:
-            date = day_dataframe['click_timestamp'].values[0]
+            date = df_date
             actually_excluded_products = []
             prod2ex = []
 

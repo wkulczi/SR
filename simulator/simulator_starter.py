@@ -16,14 +16,15 @@ class SimulatorStarter:
             self.partner_id = partner_id
         super().__init__()
 
-    def start_simulation(self):
+    def start_simulation(self, log_exclusions):
         if self.is_for_one_partner:
             simulator_core = SimulatorCore()
             optimizer = Optimizer(optimize_option='random')
             self.read_parquet_and_parse_columns()
             per_partner_simulator = PerPartnerSimulator(partner_dataframe=self.partner_df, partner_id=self.partner_id,
-                                                        optimizer=optimizer, simulator_core=simulator_core)
+                                                        optimizer=optimizer, simulator_core=simulator_core, do_log_exclusions=log_exclusions)
             per_partner_simulator.simulatePartner()
+
             per_partner_simulator.save_simulation_results(self.data_dir + "partner_performances/")
 
     def read_parquet_and_parse_columns(self):
